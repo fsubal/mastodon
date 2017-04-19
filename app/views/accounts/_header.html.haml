@@ -3,7 +3,7 @@
     .controls
       - if current_account.following?(account)
         = link_to t('accounts.unfollow'), account_unfollow_path(account), data: { method: :post }, class: 'button'
-      - else
+      - elsif !current_account.blocking?(account)
         = link_to t('accounts.follow'), account_follow_path(account), data: { method: :post }, class: 'button'
   - elsif !user_signed_in?
     .controls
